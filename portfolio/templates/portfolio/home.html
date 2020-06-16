@@ -1,0 +1,33 @@
+
+
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<body>
+  <div class="row justify-content-center my-3">
+  <div class="c">
+    <img src="{% static 'portfolio/bg.jpg'%}" class="img-fluid">
+  </div>
+</div>
+<div style= "background-image; url ({% static 'portfolio/bg.jpg'%}) ">
+<h2 class ="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for p in  prt %}
+  <div class="col-lg-4 col-md-6">
+  {% if p.url %}
+   <a href="{{ p.url }}">
+     <img src="{{ p.image.url }}" class="img-fluid mb-2">
+   </a>
+   {% else %}
+    <img src="{{ p.image.url }}" class="img-fluid mb-2">
+   {% endif %}
+   <h3>{{ p.title}}</h3>
+   <p>{{ p.description }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+</body>
